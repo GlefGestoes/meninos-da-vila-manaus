@@ -1,0 +1,2018 @@
+/* --- Estilos Gerais e Reset --- */
+:root {
+    --orange-color: darkorange;
+    --dark-bg: #1a1a1a;
+    --light-text: white;
+    --dark-text: #333;
+    --menu-size: 55px;
+    --item-size: 45px;
+    --arc-radius: 90px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.logo {
+    height: 120px;               /* Altura base */
+    max-height: 150px;           /* Altura máxima em telas grandes */
+    width: auto;                 /* Largura proporcional */
+    max-width: 100%;             /* Nunca ultrapassar a largura do container */
+    object-fit: contain;         /* Garante que a imagem não distorça */
+    align-self: flex-start;      /* Alinhamento com o topo do texto */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Sombra suave */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Transições suaves */
+}
+
+/* Efeitos de hover */
+.logo:hover {
+    transform: scale(1.05);      /* Aumenta levemente */
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7)); /* Sombra dourada no hover */
+    cursor: pointer;             /* Feedback visual */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .logo {
+        height: 100px;           /* Reduz altura em tablets */
+        align-self: center;      /* Centraliza em telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 80px;            /* Altura menor para mobile */
+        max-height: 100px;
+    }
+}
+
+/* --- Estilos para o Header --- */
+header {
+    padding: 2rem;
+    background: linear-gradient(
+        135deg,
+        #000000 0%,
+        #1a1a1a 25%,
+        #333 50%,
+        #4d4d00 75%,
+        #666 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+    object-fit: contain;
+    align-self: flex-start;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
+.header-text h1 {
+    margin: 0.2em 0;
+    line-height: 1.2;
+    color: #000;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff,
+        0 0 10px rgba(255, 165, 0, 0.7);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.header-text h3 {
+    margin: 0.5em 0;
+    color: #ffcc00;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.5em;
+}
+
+.header-text p {
+    margin: 1em 0 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    position: relative;
+    display: inline-block;
+}
+
+.header-text p::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffcc00, transparent);
+}
+
+/* primeira tela header com slid - início */
+
+/* --- Ajustes para o Header --- */
+header {
+    position: relative;
+    height: 50vh;
+    min-height: 400px;
+    max-height: 600px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.header-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.header-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    /* Ajuste crucial para garantir que o topo da imagem seja visível */
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    transform: scale(1);
+    animation: zoomOut 15s linear infinite;
+    /* Garante que a imagem cubra toda a área sem distorcer */
+    object-fit: cover;
+    object-position: center top;
+}
+
+.header-slideshow .slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Zoom mais sutil para não cortar as imagens */
+@keyframes zoomOut {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05); /* Reduzi o zoom para 1.05 */
+    }
+}
+
+/* Container do conteúdo para não sobrepor elementos importantes */
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1200px;
+    z-index: 2;
+    padding: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    header {
+        min-height: 350px;
+        max-height: 450px;
+    }
+    
+    .header-slideshow .slide {
+        /* Para mobile, prioriza mostrar o topo da imagem */
+        background-position: center 20%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        min-height: 300px;
+        max-height: 400px;
+    }
+    
+    .header-slideshow .slide {
+        /* Ajuste mais pronunciado para mobile */
+        background-position: center 30%;
+    }
+}
+
+/* primeira tela header com slid - fim */
+
+
+/* terceira tela laranja - viagens - Início */
+
+/* Todos os seletores agora são específicos para a seção #secao-3 */
+#secao-3.orange-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 40px 0;
+}
+
+#secao-3 .orange3-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    z-index: 2;
+    padding: 20px;
+}
+
+#secao-3 .orange3-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: background-image 0.5s ease;
+}
+
+#secao-3.orange-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+#secao-3 .orange3-content {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+#secao-3 .orange3-destinations {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+#secao-3 .orange3-list {
+    width: 100%;
+}
+
+#secao-3 .orange3-destination {
+    padding: 8px 12px;
+    margin: 5px 0;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border-radius: 1px;
+    background-color: transparent;
+    font-size: 1rem;
+    border: none;
+}
+
+#secao-3 .orange3-destination:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#secao-3 .orange3-destination.active {
+    background-color: black;
+    color: #e6b800;
+    font-weight: bold;
+}
+
+#secao-3 .orange3-button {
+    margin-top: 20px;
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: darkorange;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#secao-3 .orange3-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsividade específica para esta seção */
+@media (max-width: 992px) {
+    #secao-3 .orange3-container {
+        flex-direction: column;
+    }
+    
+    #secao-3 .orange3-content, 
+    #secao-3 .orange3-destinations {
+        padding: 15px;
+    }
+    
+    #secao-3 .orange3-destination {
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    #secao-3.orange-section {
+        min-height: 90vh;
+        padding: 20px 0;
+    }
+    
+    #secao-3 .orange3-container {
+        padding: 10px;
+    }
+    
+    #secao-3 .orange3-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    #secao-3 .orange3-destination {
+        padding: 5px 8px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #secao-3 .orange3-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    #secao-3 .orange3-destination {
+        padding: 4px 6px;
+    }
+}
+
+/* Estilos específicos para o título h2 */
+#secao-3 .orange3-content h2 {
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    position: relative; /* Mantém o fluxo normal */
+    z-index: 3;
+}
+
+/* Ajuste no container para posicionar o título acima */
+#secao-3 .orange3-container {
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ajuste na posição dos destinos */
+#secao-3 .orange3-destinations {
+    margin-top: 80px; /* Espaço para o título */
+    position: relative;
+    z-index: 2;
+}
+
+/* Restaura a imagem de fundo para altura completa */
+#secao-3 .orange3-bg {
+    height: 100%;
+}
+
+/* Responsividade para o título */
+@media (max-width: 992px) {
+    #secao-3 .orange3-content h2 {
+        font-size: 3rem;
+    }
+    #secao-3 .orange3-destinations {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    #secao-3 .orange3-content h2 {
+        font-size: 2.5rem;
+        text-shadow: 
+            -0.5px -0.5px 0 white,
+            0.5px -0.5px 0 white,
+            -0.5px 0.5px 0 white,
+            0.5px 0.5px 0 white;
+    }
+    #secao-3 .orange3-destinations {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    #secao-3 .orange3-content h2 {
+        font-size: 2rem;
+    }
+}
+
+/* terceira tela laranja - viagens - fim */
+
+
+
+/* Efeito de partículas opcional */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+    z-index: 1;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .logo {
+        height: 100px;
+        align-self: center;
+    }
+    
+    .header-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header-text h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        height: 80px;
+    }
+    
+    .header-text h1 {
+        font-size: 1.5rem;
+        text-shadow: 
+            -1px -1px 0 #fff,
+            1px -1px 0 #fff,
+            -1px 1px 0 #fff,
+            1px 1px 0 #fff;
+    }
+    
+    .header-text h3 {
+        font-size: 1.1rem;
+    }
+}
+
+.logo {
+    max-height: 150px; /* Altura máxima em telas grandes */
+}
+
+.logo {
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo {
+    object-fit: contain;
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+    color: var(--dark-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+}
+
+
+/* Primeira seção transparente */
+
+/* Layout de duas colunas */
+.two-column-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-image {
+    width: 400px;
+    max-width: 45%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.section-text {
+    flex: 1;
+    text-align: right;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.section-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.section-text p {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+/* Efeitos de hover */
+.section-image:hover {
+    transform: scale(1.03);
+}
+
+/* Responsividade */
+
+/* telas muito grandes */
+@media (min-width: 1600px) {
+    width: 500px;
+    max-width: 50%;
+}
+
+/* Layout Desktop - Telas grandes */
+@media (min-width: 1200px) {
+    .section-image {
+        width: 450px; /* Tamanho aumentado */
+        max-width: 50%; /* Percentual maior */
+    }
+}
+
+/* Telas extra grandes (4K, etc) */
+@media (min-width: 2000px) {
+    .section-image {
+        width: 600px;
+        max-width: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .two-column-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .section-image {
+        max-width: 80%;
+        width: 100%;
+    }
+    
+    .section-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-text h3 {
+        font-size: 1.3rem;
+    }
+    
+    .section-text p {
+        font-size: 1.1rem;
+    }
+}
+
+.section-text h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.section-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+}
+
+/* --- Container da Animação 3D --- */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000000;
+}
+
+canvas {
+    display: block;
+}
+
+/* --- MENU FLUTUANTE EM ARCO --- */
+#floating-nav {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    width: var(--menu-size);
+    height: var(--menu-size);
+}
+
+#menu-toggle {
+    width: 100%;
+    height: 100%;
+    background-color: #e6b800;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+#menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Ícone de Menu (Hamburguer) */
+#menu-toggle .hamburger { width: 50%; height: 2px; background: black; position: relative; transition: all 0.3s ease-in-out; }
+#menu-toggle .hamburger::before,
+#menu-toggle .hamburger::after { content: ''; position: absolute; left: 0; width: 100%; height: 2px; background: black; transition: all 0.3s ease-in-out; }
+#menu-toggle .hamburger::before { top: -8px; }
+#menu-toggle .hamburger::after { top: 8px; }
+
+/* Animação do ícone para "X" quando ativo */
+#floating-nav.menu-active #menu-toggle .hamburger { background: transparent; }
+#floating-nav.menu-active #menu-toggle .hamburger::before { top: 0; transform: rotate(45deg); }
+#floating-nav.menu-active #menu-toggle .hamburger::after { top: 0; transform: rotate(-45deg); }
+
+/* Itens de navegação */
+.nav-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--item-size);
+    height: var(--item-size);
+    margin-top: calc(var(--item-size) / -2);
+    margin-left: calc(var(--item-size) / -2);
+    background-color: rgba(10, 15, 30, 0.95);
+    color: #d4a017;
+    border: 2px solid #d4a017;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+    overflow: visible; /* Permite que a etiqueta apareça */
+}
+
+#floating-nav.menu-active .nav-item {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Lógica da Posição em Arco para a ESQUERDA (Desktop) */
+#floating-nav.menu-active .nav-item:nth-child(1) { transform: rotate(90deg) translateX(var(--arc-radius)) rotate(-90deg); }
+#floating-nav.menu-active .nav-item:nth-child(2) { transform: rotate(135deg) translateX(var(--arc-radius)) rotate(-135deg); }
+#floating-nav.menu-active .nav-item:nth-child(3) { transform: rotate(180deg) translateX(var(--arc-radius)) rotate(-180deg); }
+#floating-nav.menu-active .nav-item:nth-child(4) { transform: rotate(225deg) translateX(var(--arc-radius)) rotate(-225deg); }
+#floating-nav.menu-active .nav-item:nth-child(5) { transform: rotate(270deg) translateX(var(--arc-radius)) rotate(-270deg); }
+
+/* ✨ ALTERAÇÃO GERAL: Etiqueta (Tooltip) com posicionamento absoluto */
+.nav-item .nav-text {
+    position: absolute;
+    background: #fff;
+    color: var(--orange-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--orange-color);
+    font-size: 14px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+    z-index: 10;
+    transform: scale(1.1);
+}
+
+.nav-item:hover .nav-text {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ✨ ALTERAÇÃO 1: Posicionamento da etiqueta para TELAS GRANDES */
+.nav-item .nav-text {
+    top: 50%;
+    right: calc(100% + 12px); /* Sempre à esquerda do ícone */
+    transform: translateY(-50%) scale(0.9);
+}
+.nav-item:hover .nav-text {
+    transform: translateY(-50%) scale(1);
+}
+
+/* --- Conteúdo da Página (Scroll) --- */
+.content-wrapper { position: relative; 
+	z-index: 1; 
+	background: transparent; 
+	}
+	
+header { padding: 3rem 2rem; 
+	text-align: center; 
+	background-color: var(--dark-bg); 
+	color: var(--light-text); 
+	}
+	
+footer { padding: 3rem 2rem; 
+	text-align: center; 
+	background-color: transparent; 
+	color: var(--light-text); 
+	}	
+	
+.content-section { min-height: 90vh; 
+	padding: 5rem 2rem; 
+	display: flex; 
+	flex-direction: column; 
+	justify-content: center; 
+	align-items: center; 
+	box-sizing: border-box; 
+	font-size: 1.6rem; 
+	text-align: center;
+	}
+	
+.transparent-section { color: var(--light-text); 
+	text-shadow: 0 0 10px rgba(0,0,0,0.8); 
+	}
+	
+.orange-section {
+    background-color: #2a2a2a; /* Preto acinzentado */
+    color: var(--light-text);
+    position: relative;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(
+        90deg, /* Alterado para 90deg para o gradiente horizontal */
+        #FFD700 0%,       /* Dourado claro */
+        #D4AF37 50%,     /* Dourado médio */
+        #FFD700 100%     /* Dourado claro */
+    );
+    border-image-slice: 1;
+    box-shadow: 0 0 15px rgba(210, 175, 55, 0.3);
+}
+
+/* Edeitos das seções laranja - Efeito de brilho apenas nas bordas horizontais - início*/
+.orange-section::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(
+        90deg,
+        rgba(255, 215, 0, 0.3) 0%,
+        rgba(212, 175, 55, 0.6) 50%,
+        rgba(255, 215, 0, 0.3) 100%
+    );
+    border-image-slice: 1;
+    pointer-events: none;
+    z-index: -1;
+    animation: borderGlow 4s ease infinite;
+}
+
+@keyframes borderGlow {
+    0% { opacity: 0.7; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+/* Edeitos das seções laranja - Efeito de brilho apenas nas bordas horizontais - Fim*/
+
+.action-button { text-decoration: none; 
+	margin-top: 20px; 
+	padding: 14px 28px; 
+	font-size: 1.1rem; 
+	font-weight: bold; 
+	color: #e6b800; 
+	background-color: var(--light-text); 
+	border: none; 
+	border-radius: 5px; 
+	cursor: pointer; 
+	transition: all 0.3s ease; }
+.action-button:hover { background-color: black; 
+	transform: scale(1.05); }
+
+/* --- Media Queries --- */
+@media (max-width: 768px) {
+    :root { --menu-size: 50px; --item-size: 40px; --arc-radius: 75px; }
+    #floating-nav { right: 15px; }
+}
+
+@media (max-width: 480px) {
+    :root { --menu-size: 45px; --item-size: 38px; --arc-radius: 80px; }
+     
+    #floating-nav { right: 50%; bottom: 20px; top: auto; transform: translateX(50%); }
+
+    /* Arco abrindo para CIMA no mobile */
+    #floating-nav.menu-active .nav-item:nth-child(1) { transform: rotate(180deg) translateX(var(--arc-radius)) rotate(-180deg); }
+    #floating-nav.menu-active .nav-item:nth-child(2) { transform: rotate(225deg) translateX(var(--arc-radius)) rotate(-225deg); }
+    #floating-nav.menu-active .nav-item:nth-child(3) { transform: rotate(270deg) translateX(var(--arc-radius)) rotate(-270deg); }
+    #floating-nav.menu-active .nav-item:nth-child(4) { transform: rotate(315deg) translateX(var(--arc-radius)) rotate(-315deg); }
+    #floating-nav.menu-active .nav-item:nth-child(5) { transform: rotate(360deg) translateX(var(--arc-radius)) rotate(-360deg); }
+    
+    /* ✨ ALTERAÇÃO 2: Posicionamento da etiqueta para TELAS PEQUENAS */
+    
+    /* Reseta a posição do desktop */
+    .nav-item .nav-text {
+        top: auto;
+        right: auto;
+        transform: scale(0.9);
+    }
+    .nav-item:hover .nav-text {
+        transform: scale(1);
+    }
+
+    /* Itens 1 e 2 (esquerda) */
+    .nav-item:is(:nth-child(1), :nth-child(2)) .nav-text {
+        top: 50%;
+        right: calc(100% + 10px);
+        transform: translateY(-50%) scale(0.9);
+    }
+    .nav-item:is(:nth-child(1), :nth-child(2)):hover .nav-text {
+        transform: translateY(-50%) scale(1);
+    }
+
+    /* Item 3 (centro) */
+    .nav-item:nth-child(3) .nav-text {
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%) scale(0.9);
+    }
+    .nav-item:nth-child(3):hover .nav-text {
+        transform: translateX(-50%) scale(1);
+    }
+
+    /* Itens 4 e 5 (direita) */
+    .nav-item:is(:nth-child(4), :nth-child(5)) .nav-text {
+        top: 50%;
+        left: calc(100% + 10px);
+        transform: translateY(-50%) scale(0.9);
+    }
+    .nav-item:is(:nth-child(4), :nth-child(5)):hover .nav-text {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* primeira tela laranja - início */
+
+/* --- Estilos específicos para a seção 1 --- */
+#secao-1 {
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#secao-1 .background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#secao-1 .background-image {
+    position: absolute;
+    max-width: 90%;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+#secao-1 .background-image.active {
+    opacity: 1;
+}
+
+#secao-1 .section-text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    pointer-events: none;
+}
+
+#secao-1 h1 {
+    margin-top: 2rem;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+#secao-1 h2 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+#secao-1 h3, 
+#secao-1 p {
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+#secao-1 h3 {
+    font-size: 1.8rem;
+}
+
+#secao-1 p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#secao-1 .action-button {
+    position: relative;
+    z-index: 3;
+    pointer-events: all;
+    margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #secao-1 h1 {
+        font-size: 2.5rem;
+    }
+    
+    #secao-1 h2 {
+        font-size: 1.8rem;
+    }
+    
+    #secao-1 h3 {
+        font-size: 1.5rem;
+    }
+    
+    #secao-1 p {
+        font-size: 1.3rem;
+    }
+    
+    #secao-1 .background-image {
+        max-width: 95%;
+        max-height: 85%;
+    }
+}
+
+@media (max-width: 480px) {
+    #secao-1 h1 {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+    
+    #secao-1 h2 {
+        font-size: 1.5rem;
+    }
+    
+    #secao-1 h3 {
+        font-size: 1.3rem;
+    }
+    
+    #secao-1 p {
+        font-size: 1.1rem;
+    }
+    
+    #secao-1 .background-image {
+        max-height: 90%;
+    }
+}
+
+/* primeira tela laranja - fim */
+
+/* segunda tela laranja - início */
+
+    /* Estilos do Calendário Compacto */
+.calendario-compacto-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.calendario-titulo {
+    color: #FFD700;
+    text-align: justify-content;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+}
+
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.mes-card {
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.mes-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.mes-header {
+    background-color: var(--mes-cor);
+    color: #000;
+    padding: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #000;
+}
+
+.mes-content {
+    padding: 1rem;
+    min-height: 150px;
+}
+
+.mes-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mes-content li {
+    margin-bottom: 0.6rem;
+    padding-left: 30px; /* Espaço para os números */
+    position: relative;
+    color: #000;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.mes-content li span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25px; /* Largura fixa para alinhamento */
+    font-weight: bold;
+    color: #000;
+    background-color: rgba(255, 215, 0, 0.3); /* Fundo amarelo suave */
+    border-radius: 3px;
+    text-align: center;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.calendario-button {
+    display: block;
+    margin: 2rem auto 0;
+    background: #000;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s;
+}
+
+.calendario-button:hover {
+    background: #FFD700;
+    color: #000;
+    transform: scale(1.05);
+}
+
+    /* Responsividade */
+@media (max-width: 900px) {
+    .calendario-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .calendario-grid {
+        grid-template-columns: 1fr;
+    }
+        
+    .calendario-titulo {
+        font-size: 1.6rem;
+    }
+}
+
+/* segunda tela laranja - fim */
+
+/* quarta tela laranja - início */
+
+    /* Estilos do Carrossel Horizontal */
+/* Estilos específicos para a seção de jogadores - UNIFICADO */
+#secao-4.content-section.orange-section {
+    background-color: darkorange;
+    padding: 3rem 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#secao-4 .jogadores-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+}
+
+#secao-4 .jogadores-titulo {
+    color: #FFD700;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000;
+    padding: 0.5rem;
+}
+
+#secao-4 .carrossel-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+#secao-4 .carrossel-horizontal {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: fit-content;
+    position: relative;
+}
+
+#secao-4 .carrossel-horizontal.auto-scrolling {
+    animation: autoScroll 40s infinite linear;
+}
+
+@keyframes autoScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-80%)); }
+}
+
+#secao-4 .carrossel-horizontal.paused {
+    animation-play-state: paused;
+}
+
+#secao-4 .jogador {
+    flex: 0 0 auto;
+    transition: all 0.3s ease;
+    position: relative;
+    width: 180px;
+    cursor: pointer;
+}
+
+#secao-4 .jogador-img-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border: 3px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#secao-4 .jogador img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+#secao-4 .jogador-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: 0 0 8px 8px;
+    border: 2px solid #000;
+    border-top: none;
+    text-align: center;
+}
+
+#secao-4 .jogador-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    color: #FFD700;
+    text-shadow: 
+        1px 1px 0 #000,
+        -1px -1px 0 #000;
+}
+
+#secao-4 .jogador-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: white;
+    text-shadow: 
+        1px 1px 0 #000,
+        -1px -1px 0 #000;
+}
+
+#secao-4 .jogador:hover .jogador-img-container,
+#secao-4 .jogador.active .jogador-img-container {
+    border-color: #FFD700;
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+#secao-4 .jogador:hover img,
+#secao-4 .jogador.active img {
+    transform: scale(1.1);
+}
+
+#secao-4 .jogador:hover .jogador-info,
+#secao-4 .jogador.active .jogador-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Controles do carrossel - SEMPRE VISÍVEIS */
+#secao-4 .carrossel-controles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+    width: 100%;
+}
+
+#secao-4 .carrossel-btn {
+    background: #000;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#secao-4 .carrossel-btn:hover {
+    background: #FFD700;
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+}
+
+#secao-4 .carrossel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* quarta tela laranja - fim */
+
+/* Textos da seção transparente avaliação - início */
+
+  .hashtag-container {
+    display: flex;
+	align-items: center; /* Centraliza verticalmente a # e os textos */
+    margin-bottom: 20px;
+  }
+  
+  .big-hashtag {
+    font-size: 6em;
+    background: linear-gradient(to bottom, #FFD700, #FFA500, #FFD700); /* Gradiente dourado */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px white; /* Borda branca */
+    text-stroke: 2px white;
+    margin-right: 10px;
+    line-height: 1;
+    text-shadow: none; /* Removemos o text-shadow anterior */
+  }
+  
+  .hashtag-text-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+	gap: 0.1em; /* ↓ Reduzi o espaçamento entre linhas (era 0.2em) */
+	margin-left: 1px; /* ↓ Aproxima a coluna de texto da # (opcional) */
+  }
+  
+  .hashtag-text {
+    font-size: 1.2em;
+    background: black; /* Gradiente mais suave para textos menores */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+    line-height: 1;
+    margin: 0;
+	padding: 0;
+	text-align: left;
+  }
+
+/* Textos da seção transparente avaliação - Fim */
+
+/* Textos da seção transparente uma vez menino da vila sempre menino da vila - Início */
+
+        /* Estilos para os textos */
+        .content-section {
+            text-align: center;
+        }
+        
+        .ballet-text {
+            font-family: "Ballet", cursive;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            background: linear-gradient(to right, #FFEE58, #FFD600, #FFEA00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 3em;
+			margin: 0;
+			padding: 0;
+			line-height: 0.8;
+        }
+        
+        .bungee-text {
+            font-family: "Bungee Shade", cursive;
+            font-size: 1.2em;
+            margin: 0;
+			padding: 0;
+			line-height: 0.9;
+        }
+		
+/* Textos da seção transparente uma vez menino da vila sempre menino da vila - Fim */
+
+/* --- Estilo Exclusivo para a Seção 5 - início--- */
+#secao-5 {
+    position: relative;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    padding: 4rem 0;
+}
+
+#secao-5 .two-column-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+#secao-5 .section-image {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+/* Container para o efeito de gradiente animado */
+#secao-5 .image-container {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Efeito de gradiente animado (como bandeira ondulante) */
+#secao-5 .image-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(
+        135deg,
+        #000000 0%,
+        #ffffff 25%,
+        #FFD700 50%,
+        #0000FF 75%,
+        #000000 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientWave 12s ease infinite;
+    z-index: 1;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+@keyframes gradientWave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#secao-5 .section-text {
+    text-align: center;
+    z-index: 2;
+}
+
+#secao-5 h2 {
+    font-size: 3rem;
+    color: black;
+    text-shadow: 
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+#secao-5 h3 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    margin-bottom: 2rem;
+}
+
+#secao-5 .action-button {
+    margin-top: 3rem;
+    background-color: black;
+    color: #e6b800;
+    border: 1px solid #e6b800;
+    font-size: 1.2rem;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+}
+
+#secao-5 .action-button:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    #secao-5 .two-column-layout {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    #secao-5 .section-image {
+        width: 300px;
+    }
+    
+    #secao-5 h2 {
+        font-size: 2.5rem;
+    }
+    
+    #secao-5 h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #secao-5 h2 {
+        font-size: 2rem;
+    }
+    
+    #secao-5 h3 {
+        font-size: 1.5rem;
+    }
+    
+    #secao-5 .action-button {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+}
+
+/* --- Estilo Exclusivo para a Seção 5 - fim--- */
+
+/* --- Botão social - Início -- */
+
+/* --- Bola de Futebol Social Flutuante --- */
+/* --- Bola de Futebol Social Flutuante --- */
+#social-ball {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ball-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.soccer-ball {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid #fff;
+    transition: transform 0.3s ease;
+}
+
+.soccer-ball::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, #000 0%, transparent 15%),
+        radial-gradient(circle at 70% 30%, #000 0%, transparent 15%),
+        radial-gradient(circle at 30% 70%, #000 0%, transparent 15%),
+        radial-gradient(circle at 70% 70%, #000 0%, transparent 15%),
+        linear-gradient(to right, transparent 45%, #fff 45%, #fff 55%, transparent 55%),
+        linear-gradient(to bottom, transparent 45%, #fff 45%, #fff 55%, transparent 55%);
+    background-size: 100% 100%;
+}
+
+.social-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: white;
+    font-size: 40px;
+    text-decoration: none;
+    border-radius: 50%;
+    text-shadow: 0 0 3px rgba(255,255,255,0.5);
+}
+
+.social-icon.whatsapp { background-color: #25D366; }
+.social-icon.instagram { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.social-icon.phone { background-color: #34B7F1; }
+.social-icon.youtube { background-color: #FF0000; }
+
+.social-icon.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+
+#social-ball:hover .soccer-ball {
+    transform: scale(1.1);
+}
+
+/* Animação de pulsação */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#social-ball.pulse {
+    animation: pulse 2s infinite;
+}
+
+@media (max-width: 768px) {
+    #social-ball {
+        bottom: 15px;
+        left: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .social-icon {
+        font-size: 30px;
+    }
+}
+
+/* --- Botão social - Fim -- */
+
+/* --- Slide video - Início -- */
+
+/* Estilos para o vídeo de fundo */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.video-slideshow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.video-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out, transform 20s ease-in-out;
+    z-index: 1;
+    object-fit: cover;
+}
+
+.video-slide.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+/* Ajuste para o conteúdo sobrepor o vídeo */
+.jogadores-container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Responsividade */
+@media (max-width: 2000px) {
+    .video-slide {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    .video-slide.active {
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+@media (max-width: 1600px) {
+    .video-slide {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .video-slide.active {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+@media (max-width: 992px) {
+    .video-slide {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .video-slide.active {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+@media (max-width: 768px) {
+    .video-slide, .video-slide.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (max-width: 576px) {
+    .video-slide, .video-slide.active {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* --- Slide video - Fim -- */
+
+/* --- Estrelas e coroa - Início -- */
+
+ .image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.star {
+    position: absolute;
+    color: gold;
+    opacity: 0;
+    z-index: 10;
+    animation: starAnimation 8s infinite;
+}
+
+.crown {
+    position: absolute;
+    color: gold;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    animation: crownAnimation 8s infinite;
+    animation-delay: 4.5s;
+}
+
+/* Estilos base (mobile first) */
+.star {
+    font-size: 24px;
+    top: 10px;
+}
+
+.star-left {
+    left: 30%;
+    top: -30px;
+}
+
+.star-right {
+    right: 30%;
+    top: -30px;
+    animation-delay: 0.5s;
+}
+
+.crown {
+    font-size: 30px;
+    top: -60px;
+}
+
+/* Telas pequenas (≥576px) */
+@media (min-width: 576px) {
+    .star {
+        font-size: 28px;
+        top: 15px;
+    }
+    
+    .star-left, .star-right {
+        top: -35px;
+    }
+    
+    .crown {
+        font-size: 35px;
+        top: -65px;
+    }
+}
+
+/* Telas médias (≥768px) */
+@media (min-width: 768px) {
+    .star {
+        font-size: 32px;
+        top: 20px;
+    }
+    
+    .star-left {
+        left: 33%;
+        top: -40px;
+    }
+    
+    .star-right {
+        right: 33%;
+        top: -40px;
+    }
+    
+    .crown {
+        font-size: 40px;
+        top: -75px;
+    }
+}
+
+/* Telas grandes (≥992px) */
+@media (min-width: 992px) {
+    .star {
+        font-size: 36px;
+    }
+    
+    .star-left {
+        left: 35%;
+    }
+    
+    .star-right {
+        right: 35%;
+    }
+    
+    .crown {
+        font-size: 45px;
+        top: -80px;
+    }
+}
+
+/* Telas extra grandes (≥1600px) */
+@media (min-width: 1600px) {
+    .star {
+        font-size: 40px;
+    }
+    
+    .crown {
+        font-size: 50px;
+        top: -85px;
+    }
+}
+
+/* Telas super grandes (≥2000px) */
+@media (min-width: 2000px) {
+    .star {
+        font-size: 48px;
+        top: 25px;
+    }
+    
+    .star-left, .star-right {
+        top: -45px;
+    }
+    
+    .crown {
+        font-size: 60px;
+        top: -100px;
+    }
+}
+    
+    @keyframes starAnimation {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        10% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        40% {
+            animation-timing-function: ease-in-out;
+            transform: translateY(0) rotate(0deg);
+        }
+        50% {
+            transform: translateY(-20px) rotate(180deg);
+        }
+        60% {
+            transform: translateY(0) rotate(360deg);
+        }
+        70% {
+            transform: translateX(var(--start-pos)) translateY(0);
+        }
+        80% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+        90%, 100% {
+            transform: translateX(0) scale(0);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes crownAnimation {
+        0%, 50% {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+        60% {
+            opacity: 1;
+            transform: translateX(-50%) scale(1.2);
+        }
+        70% {
+            transform: translateX(-50%) scale(1);
+        }
+        80% {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+        }
+        90%, 100% {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+    }
+ 
+/* --- Estrelas e coroa - fim -- */

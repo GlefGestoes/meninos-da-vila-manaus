@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon básico (.ico) -->
+    <link rel="icon" href="./src/img/logovilaicon.ico" type="image/x-icon">
+    
+    <!-- Para navegadores modernos (PNGs otimizados) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon-16x16.png">
+    
+    <!-- Para Apple devices (PNG sem .ico no nome) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/apple-touch-icon.png">
+    
+    <!-- Cor da aba no Chrome Android -->
+    <meta name="theme-color" content="#ffffff">
+    
+    <title>Meninos da Vila - Manaus</title>
+    
+    <!-- CSS (evitar duplicação) -->
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ballet:opsz@16..72&family=Bungee+Shade&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <nav id="floating-nav">
+        <a href="#secao-5" class="nav-item"><span>5</span><span class="nav-text">Parceiros</span></a>
+        <a href="#secao-4" class="nav-item"><span>4</span><span class="nav-text">Alunos</span></a>
+        <a href="#secao-3" class="nav-item"><span>3</span><span class="nav-text">Viagens</span></a>
+        <a href="#secao-2" class="nav-item"><span>2</span><span class="nav-text">Competições</span></a>
+        <a href="#secao-1" class="nav-item"><span>1</span><span class="nav-text">Tumas</span></a>
+        
+        <button id="menu-toggle" aria-label="Abrir Menu">
+            <div class="hamburger"></div>
+        </button>
+    </nav>
+
+	<div class="content-wrapper">
+		<header>
+			<div class="header-slideshow">
+				<div class="slide active" style="background-image: url('./src/img/estadio.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/jovens3.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/jovens1.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/jovens2.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/fotocapeao.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/times3.png')"></div>
+				<div class="slide" style="background-image: url('./src/img/times4.png')"></div>
+				<div class="slide active" style="background-image: url('./src/img/estadio2.png')"></div>
+				<div class="slide active" style="background-image: url('./src/img/meninosemeninas.png')"></div>
+			</div>
+			<div class="header-content">
+				<img src="./src/img/logovila.png" alt="Logo Meninos da Vila" class="logo">
+				<div class="header-text">
+					<h1>MENINOS DA VILA</h1>
+					<h1>SANTOS ACADEMY</h1>
+					<h3>Unidade Manaus-AM</h3>
+					<p>Vista o manto, entre em campo e viva a paixão desde cedo!</p>
+				</div>
+			</div>
+		</header>
+        <main>
+			<section class="content-section transparent-section">
+				<div class="two-column-layout">
+					<div class="two-column-layout">
+						<div class="image-container">
+							<img src="./src/img/logosantos.png" alt="Turma Feminina Meninos da Vila" class="section-image">
+							<div class="star star-left">★</div>
+							<div class="star star-right">★</div>
+							<div class="crown">🜲</div>
+						</div>
+						<div class="section-text">
+							<h2>JUNTOS!</h2>                    
+							<div class="hashtag-container">
+								<span class="big-hashtag"></span>
+								<div class="hashtag-text-column">
+									<span class="hashtag-text">Para</span>
+									<span class="hashtag-text">Formar</span>
+									<span class="hashtag-text">Craques</span>
+								</div>                      
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="secao-1" class="content-section orange-section">
+				<img src="./src/img/disputa-meninas.png" alt="Turma Feminina Meninos da Vila" class="section-image">
+				<img src="./src/img/disputa-meninos.png" alt="Turma Masculina Meninos da Vila" class="section-image">
+				<img src="./src/img/disputa-meninos2.png" alt="Turma Masculina Meninos da Vila" class="section-image">	
+				<img src="./src/img/disputa-meninas2.png" alt="Turma Feminina Meninos da Vila" class="section-image">					
+				<div class="section-text">
+					<h1>TURMAS</h1>
+					<h2>MASCULINA E FEMININA</h2>
+					<div>
+						<h3>MATRÍCULAS ABERTAS</h3>
+						<p>(92) 99444-2781</p>
+					</div>
+				</div>
+				
+				<button class="action-button">Saiba Mais</button>
+			</section>
+            <section class="content-section transparent-section">
+				<div class="header-text">
+					<h1>Escola de Futebol Oficial do Santos FC</h1>
+					<p>Unidade Manaus</p>
+				</div>
+            </section>
+			<section id="secao-2" class="content-section orange-section">
+				<div class="calendario-compacto-container">
+					<h2 class="calendario-titulo">2025</h2>
+					<br>
+					<h2 class="calendario-titulo">CALENDÁRIO SEMESTRAL</h2>
+					
+					<div class="calendario-grid">
+						<!-- Janeiro -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #FFD700;">JANEIRO</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>05</span> Treinos</li>
+									<li><span>15</span> Seleção</li>
+									<li><span>20</span> Avaliações</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Fevereiro -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #FFA500;">FEVEREIRO</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>03</span> Amistosos</li>
+									<li><span>10</span> Workshop</li>
+									<li><span>28</span> Férias</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Março -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #FF6347;">MARÇO</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>02</span> Campeonato</li>
+									<li><span>09</span> Clínicas</li>
+									<li><span>23</span> Jogos</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Abril -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #32CD32;">ABRIL</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>06</span> Torneio</li>
+									<li><span>13</span> Visita</li>
+									<li><span>20</span> Avaliações</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Maio -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #1E90FF;">MAIO</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>04</span> Decisivos</li>
+									<li><span>11</span> Palestras</li>
+									<li><span>18</span> Fotos</li>
+								</ul>
+							</div>
+						</div>
+						
+						<!-- Junho -->
+						<div class="mes-card">
+							<div class="mes-header" style="--mes-cor: #9370DB;">JUNHO</div>
+							<div class="mes-content">
+								<ul>
+									<li><span>01</span> Semifinais</li>
+									<li><span>08</span> Final</li>
+									<li><span>15</span> Premiação</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<button class="action-button calendario-button">
+						<i class="fas fa-calendar-alt"></i> VER DETALHES
+					</button>
+				</div>
+			</section>			
+			    <section class="content-section transparent-section">
+					<p class="ballet-text">Uma vez</p>
+					<h1 class="bungee-text">Menino da vila</h1>
+					<p class="ballet-text">sempre</p>
+					<h1 class="bungee-text">Menino da vila</h1>
+				</section>
+				<section id="secao-3" class="content-section orange-section">
+					<div class="orange3-container">
+						<!-- Conteúdo textual no lado esquerdo -->
+						<div class="orange3-content">
+							<h2>Viagens</h2>
+						</div>
+						
+						<!-- Carrossel de destinos no lado direito -->
+						<div class="orange3-destinations">
+							<div class="orange3-list">
+								<div class="orange3-destination active" data-bg-image="./src/img/viagem1.jpeg">Manaus</div>
+								<div class="orange3-destination" data-bg-image="./src/img/viagem2.png">São Paulo</div>
+								<div class="orange3-destination" data-bg-image="./src/img/viagem3.png">Brasília</div>
+								<!-- Adicione mais destinos conforme necessário -->
+							</div>
+						</div>
+						
+						<!-- Fundo com imagem do destino selecionado -->
+						<div class="orange3-bg"></div>
+					</div>
+					</div>
+				</section>
+			<section class="content-section transparent-section">
+			  <div class="two-column-layout">
+				<img src="./src/img/seja.png" alt="Turma Feminina Meninos da Vila" class="section-image">
+				<div class="section-text">
+				  <h2>SEJA VOCÊ TAMBEM!</h2>			  
+				  <div class="hashtag-container">
+					<span class="big-hashtag">#</span>
+					<div class="hashtag-text-column">
+					  <span class="hashtag-text">Um</span>
+					  <span class="hashtag-text">Menino</span>
+					  <span class="hashtag-text">da Vila</span>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+			<section id="secao-4" class="content-section orange-section">
+				<!-- Slideshow de vídeos de fundo -->
+				<div class="video-background">
+					<div class="video-slideshow">
+						<video class="video-slide active" autoplay muted loop>
+							<source src="./src/img/estadiovid1.mp4" type="video/mp4">
+						</video>
+						<video class="video-slide" autoplay muted loop>
+							<source src="./src/img/estadiovid2.mp4" type="video/mp4">
+						</video>
+					</div>
+					<div class="video-overlay"></div>
+				</div>
+				
+				<div class="jogadores-container">
+					<h2 class="jogadores-titulo">NOSSOS ALUNOS</h2>
+					
+					<div class="carrossel-wrapper">
+						<div class="carrossel-horizontal" id="carrossel">
+							<!-- Jogador 1 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Atacante">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador4.png" alt="Menina">
+								</div>
+								<div class="jogador-info">
+									<h3>Menina</h3>
+									<p>15 anos · Atacante</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 2 -->
+							<div class="jogador" data-nome="Menino" data-idade="15" data-posicao="Meio-campista">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador5.png" alt="Pedro Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Pedro Santos</h3>
+									<p>15 anos · Meio-campista</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 3 -->
+							<div class="jogador" data-nome="Menino" data-idade="15" data-posicao="Zagueiro">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador6.png" alt="Alberto Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Alberto Santos</h3>
+									<p>15 anos · Zagueiro</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 4 -->
+							<div class="jogador" data-nome="Menino" data-idade="15" data-posicao="Atacante">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador10.png" alt="Hugo Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Hugo Santos</h3>
+									<p>15 anos · Atacante</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 5 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Lateral">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador11.png" alt="Luciana Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Luciana Santos</h3>
+									<p>15 anos · Lateral</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 6 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Ponta-esquerda">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador12.png" alt="Lara Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Lara Santos</h3>
+									<p>15 anos · Ponta esquerda</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 7 -->
+							<div class="jogador" data-nome="Menino" data-idade="15" data-posicao="Atacante">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador13.png" alt="Paulo Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Paulo Santos</h3>
+									<p>15 anos · Atacante</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 8 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Zagueira">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador14.png" alt="Rosa Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Rosa Santos</h3>
+									<p>15 anos · Zagueira</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 9 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Meio-campista">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador15.png" alt="Lara Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Lara Santos</h3>
+									<p>15 anos · Meio-campista</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 10 -->
+							<div class="jogador" data-nome="Menina" data-idade="17" data-posicao="Ponta direita">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador16.png" alt="Raquel Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Raquel Santos</h3>
+									<p>17 anos · Ponta direita</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 11 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Lateral">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador17.png" alt="Flávia Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Flávia Santos</h3>
+									<p>15 anos · Lateral</p>
+								</div>
+							</div>
+							
+							<!-- Jogador 12 -->
+							<div class="jogador" data-nome="Menina" data-idade="15" data-posicao="Atacante">
+								<div class="jogador-img-container">
+									<img src="./src/img/jogador18.png" alt="Sara Santos">
+								</div>
+								<div class="jogador-info">
+									<h3>Sara Santos</h3>
+									<p>15 anos · Atacante</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="carrossel-controles">
+							<button class="carrossel-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+							<button class="carrossel-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+						</div>
+					</div>
+				</div>
+			</section>         
+			<section class="content-section transparent-section">
+			  <div class="two-column-layout">
+				<img src="./src/img/avaliacao.png" alt="Turma Feminina Meninos da Vila" class="section-image">
+				<div class="section-text">
+				  <h2>EM BREVE!</h2>			  
+				  <div class="hashtag-container">
+					<span class="big-hashtag">#</span>
+					<div class="hashtag-text-column">
+					  <span class="hashtag-text">Onde Nascem</span>
+					  <span class="hashtag-text">Os</span>
+					  <span class="hashtag-text">Raios</span>
+					</div>
+				  </div>
+				  
+				  <div class="hashtag-container">
+					<span class="big-hashtag">#</span>
+					<div class="hashtag-text-column">
+					  <span class="hashtag-text">Maior fábrica</span>
+					  <span class="hashtag-text">do</span>
+					  <span class="hashtag-text">Brasil</span>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+			<section id="secao-5" class="content-section orange-section">
+				<div class="two-column-layout">
+					<div class="image-container">
+						<img src="./src/img/logo-vila-2.png" alt="Turma Feminina Meninos da Vila" class="section-image">
+					</div>
+					<div class="section-text">
+						<h2>MATRÍCULAS ABERTAS</h2>
+						<h3>(92) 99444-2781</h3>
+					</div>
+				</div>
+				<a href="#secao-1" class="action-button">Voltar ao Topo</a>
+			</section>
+        </main>	
+        <footer>
+            <p>Escola de Futebol Oficial do Santos FC - Unidade Manaus</p>
+			<p>Av. Efigênio Salles, 1005 - Parque 10 de Novembro, Manaus/AM - CEP 69060-020, Brasil.</p>
+			<p>E-mail: meninosdavilamanaus@yahoo.com.br</p>
+            <p>Contato 92 99444-2781</p>
+            <p>&copy; 2025 Todos os direitos reservados.</p>
+            <p>Gabriel Dantas | Programador 92 98480-1522.</p>
+        </footer>
+    </div>
+	<div id="social-ball">
+		<div class="social-icons">
+			<a href="https://wa.me/92994442781" target="_blank" class="social-icon whatsapp">
+				<i class="fab fa-whatsapp"></i>
+			</a>
+			<a href="https://www.instagram.com/sfcmeninosdavilamanaus?igsh=cmt4enNxMnppb3lt" target="_blank" class="social-icon instagram">
+				<i class="fab fa-instagram"></i>
+			</a>
+			<a href="tel:+92994442781" class="social-icon phone">
+				<i class="fas fa-phone"></i>
+			</a>
+			<a href="https://m.youtube.com/@SantosTVManaus?fbclid=PAQ0xDSwLzrKJleHRuA2FlbQIxMAABp9NDbDafF2PItUWL0xUJGdNPQlu-hfWIwvyEDwuDQVMZinqphIeMOBKLpce9_aem_-4QH1-c6U4hfD2Ejnt_jcQ" target="_blank" class="social-icon youtube">
+				<i class="fab fa-youtube"></i>
+			</a>
+		</div>
+		<div class="ball-container">
+			<div class="soccer-ball"></div>
+		</div>
+	</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="./src/js/main.js"></script>
+</body>
+</html>
